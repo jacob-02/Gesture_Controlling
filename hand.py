@@ -16,14 +16,14 @@ def hand():
             image = cv2.flip(image, 1)
 
             results = holistic.process(image)
-            print("Face Landmarks", results.face_landmarks)
+            print("Face Landmarks", results.hand_landmarks)
 
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACE_CONNECTIONS,
+            mp_drawing.draw_landmarks(image, results.hand_landmarks, mp_holistic.HAND_CONNECTIONS,
                                       mp_drawing.DrawingSpec(color=(80, 110, 10), thickness=1, circle_radius=1),
                                       mp_drawing.DrawingSpec(color=(80, 256, 121), thickness=1,
-                                                             circle_radius=1))  # This is for face
+                                                             circle_radius=1))  # This is for hand
             # landmarks
 
             cv2.imshow('Webcam', image)

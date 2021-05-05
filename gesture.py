@@ -4,7 +4,7 @@ import cv2
 mp_drawing = mp.solutions.drawing_utils
 mp_holistic = mp.solutions.holistic
 
-capture = cv2.VideoCapture(1)
+capture = cv2.VideoCapture(0)
 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
     while True:
@@ -12,7 +12,6 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
 
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         image = cv2.flip(image, 1)
-        image = cv2.flip(image, 0)
 
         results = holistic.process(image)
         print("Face Landmarks", results.face_landmarks)
@@ -31,7 +30,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS, mp_drawing.DrawingSpec(color=(245, 117, 66), thickness=2, circle_radius=2), mp_drawing.DrawingSpec(color=(245, 66, 230), thickness=2, circle_radius=2))  # This is for pose
         # landmarks
 
-        cv2.imshow('Webcam', image)
+        cv2.imshow('Main Webcam', image)
 
         if cv2.waitKey(20) & 0xFF == ord('d'):
             break

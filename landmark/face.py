@@ -2,7 +2,7 @@ import mediapipe as mp
 import cv2
 
 
-def hand():
+def face_detection():
     mp_drawing = mp.solutions.drawing_utils
     mp_holistic = mp.solutions.holistic
 

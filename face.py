@@ -20,13 +20,13 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
 
         image = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 
-        mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACE_CONNECTIONS)  # This is for face
+        mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACE_CONNECTIONS, mp_drawing.DrawingSpec(color=(200, 0, 10), thickness=2, circle_radius=2), mp_drawing.DrawingSpec(color=(0, 220, 0), thickness=2, circle_radius=2))  # This is for face
         # landmarks
-        mp_drawing.draw_landmarks(image, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS)  # This is for
+        mp_drawing.draw_landmarks(image, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS, mp_drawing.DrawingSpec(color=(200, 0, 10), thickness=2, circle_radius=2), mp_drawing.DrawingSpec(color=(0, 220, 0), thickness=2, circle_radius=2))  # This is for
         # left hand landmarks
-        mp_drawing.draw_landmarks(image, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS)  # This is for
+        mp_drawing.draw_landmarks(image, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS, mp_drawing.DrawingSpec(color=(200, 0, 10), thickness=2, circle_radius=2), mp_drawing.DrawingSpec(color=(0, 220, 0), thickness=2, circle_radius=2))  # This is for
         # right hand landmarks
-        mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS)  # This is for pose
+        mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS, mp_drawing.DrawingSpec(color=(200, 0, 10), thickness=2, circle_radius=2), mp_drawing.DrawingSpec(color=(0, 220, 0), thickness=2, circle_radius=2))  # This is for pose
         # landmarks
 
         cv2.imshow('Webcam', image)

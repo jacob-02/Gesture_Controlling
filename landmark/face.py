@@ -16,7 +16,6 @@ def face_detection():
             image = cv2.flip(image, 1)
 
             results = holistic.process(image)
-            print("Face Landmarks", results.face_landmarks)
 
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 

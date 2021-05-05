@@ -1,40 +1,43 @@
+import time
 import mediapipe as mp
 import cv2
 
 
 def hand_detection():
-    mp_drawing = mp.solutions.drawing_utils
-    mp_holistic = mp.solutions.holistic
+    mpHands = mp.solutions.hands
+    hands = mpHands.Hands()
+    mpDraw = mp.solutions.drawing_utils
+
+    pTime = 0
+    cTime = 0
 
     capture = cv2.VideoCapture(0)
 
-    with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
-        while True:
-            ret, frame = capture.read()
+    while True:
+        ret, frame = capture.read()
+        frame = cv2.flip(frame, 1)
+        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = hands.process(image)
 
-            image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            image = cv2.flip(image, 1)
+        if results.multi_hand_landmarks:
+            for handLms in results.multi_hand_landmarks:
+                for id, lm in enumerate(handLms.landmark):
+                    h, w, c = frame.shape
+                    cx, cy = int(lm.x * w), int(lm.y * h)
+                    print(id, cx, cy)
 
-            results = holistic.process(image)
+                mpDraw.draw_landmarks(frame, handLms, mpHands.HAND_CONNECTIONS)
 
-            image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+        cTime = time.time()
+        fps = 1 / (cTime - pTime)
+        pTime = cTime
 
-            mp_drawing.draw_landmarks(image, results.right_hand_landmarks, mp_holistic.HAND_CONNECTIONS,
-                                      mp_drawing.DrawingSpec(color=(80, 110, 10), thickness=2, circle_radius=2),
-                                      mp_drawing.DrawingSpec(color=(80, 256, 121), thickness=2,
-                                                             circle_radius=2))  # This is for hand
-            # landmarks
+        cv2.putText(frame, str(int(fps))+" fps", (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
 
-            mp_drawing.draw_landmarks(image, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS,
-                                      mp_drawing.DrawingSpec(color=(80, 110, 10), thickness=2, circle_radius=2),
-                                      mp_drawing.DrawingSpec(color=(80, 256, 121), thickness=2,
-                                                             circle_radius=2))  # This is for hand
-            # landmarks
+        cv2.imshow('Webcam', frame)
 
-            cv2.imshow('Webcam', image)
-
-            if cv2.waitKey(20) & 0xFF == ord('d'):
-                break
+        if cv2.waitKey(20) & 0xFF == ord('d'):
+            break
 
     capture.release()
     cv2.destroyAllWindows()

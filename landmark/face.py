@@ -1,34 +1,46 @@
+import time
 import mediapipe as mp
 import cv2
 
 
 def face_detection():
+    mpFaces = mp.solutions.face_mesh
+    faces = mpFaces.FaceMesh()
     mp_drawing = mp.solutions.drawing_utils
-    mp_holistic = mp.solutions.holistic
+
+    pTime = 0
+    cTime = 0
 
     capture = cv2.VideoCapture(0)
 
-    with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
-        while True:
-            ret, frame = capture.read()
+    while True:
+        ret, frame = capture.read()
+        frame = cv2.flip(frame, 1)
+        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = faces.process(image)
 
-            image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            image = cv2.flip(image, 1)
+        if results.multi_face_landmarks:
+            for faceLms in results.multi_face_landmarks:
+                for id, lm in enumerate(faceLms.landmark):
+                    h, w, c = frame.shape
+                    cx, cy = int(lm.x * w), int(lm.y * h)
+                    print(id, cx, cy)
 
-            results = holistic.process(image)
-
-            image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-
-            mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACE_CONNECTIONS,
+                mp_drawing.draw_landmarks(frame, faceLms, mpFaces.FACE_CONNECTIONS,
                                       mp_drawing.DrawingSpec(color=(80, 110, 10), thickness=1, circle_radius=1),
                                       mp_drawing.DrawingSpec(color=(80, 256, 121), thickness=1,
-                                                             circle_radius=1))  # This is for face
-            # landmarks
+                                                             circle_radius=1))
 
-            cv2.imshow('Webcam', image)
+        cTime = time.time()
+        fps = 1 / (cTime - pTime)
+        pTime = cTime
 
-            if cv2.waitKey(20) & 0xFF == ord('d'):
-                break
+        cv2.putText(frame, str(int(fps)) + " fps", (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
+
+        cv2.imshow('Webcam', frame)
+
+        if cv2.waitKey(20) & 0xFF == ord('d'):
+            break
 
     capture.release()
     cv2.destroyAllWindows()

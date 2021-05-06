@@ -15,7 +15,6 @@ detector = HandModule.HandDetector()
 while True:
     ret, frame = capture.read()
     frame = cv2.flip(frame, 1)
-
     frame = detector.findHands(frame)
 
     lm = detector.findPosition(frame)

@@ -20,9 +20,9 @@ def pose_detection():
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
             mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_holistic.POSE_CONNECTIONS,
-                                      mp_drawing.DrawingSpec(color=(80, 110, 10), thickness=1, circle_radius=1),
-                                      mp_drawing.DrawingSpec(color=(80, 256, 121), thickness=1,
-                                                             circle_radius=1))  # This is for pose
+                                      mp_drawing.DrawingSpec(color=(0, 0, 0), thickness=2, circle_radius=2),
+                                      mp_drawing.DrawingSpec(color=(155, 155, 155), thickness=2,
+                                                             circle_radius=2))  # This is for pose
             # landmarks
 
             cv2.imshow('Webcam', image)

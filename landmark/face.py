@@ -27,9 +27,9 @@ def face_detection():
                     print(id, cx, cy)
 
                 mp_drawing.draw_landmarks(frame, faceLms, mpFaces.FACE_CONNECTIONS,
-                                      mp_drawing.DrawingSpec(color=(80, 110, 10), thickness=1, circle_radius=1),
-                                      mp_drawing.DrawingSpec(color=(80, 256, 121), thickness=1,
-                                                             circle_radius=1))
+                                          mp_drawing.DrawingSpec(color=(80, 110, 10), thickness=1, circle_radius=1),
+                                          mp_drawing.DrawingSpec(color=(80, 256, 121), thickness=1,
+                                                                 circle_radius=1))
 
         cTime = time.time()
         fps = 1 / (cTime - pTime)

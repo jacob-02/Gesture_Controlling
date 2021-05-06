@@ -1,3 +1,3 @@
-from landmark import face, hand
+from landmark import face, hand, pose
 
-face.face_detection()
+pose.pose_detection()

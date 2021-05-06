@@ -26,13 +26,16 @@ def hand_detection():
                     cx, cy = int(lm.x * w), int(lm.y * h)
                     print(id, cx, cy)
 
-                mpDraw.draw_landmarks(frame, handLms, mpHands.HAND_CONNECTIONS)
+                mpDraw.draw_landmarks(frame, handLms, mpHands.HAND_CONNECTIONS,
+                                      mpDraw.DrawingSpec(color=(0, 0, 0), thickness=2, circle_radius=2),
+                                      mpDraw.DrawingSpec(color=(155, 155, 155), thickness=2,
+                                                         circle_radius=2))
 
         cTime = time.time()
         fps = 1 / (cTime - pTime)
         pTime = cTime
 
-        cv2.putText(frame, str(int(fps))+" fps", (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
+        cv2.putText(frame, str(int(fps)) + " fps", (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
 
         cv2.imshow('Webcam', frame)
 

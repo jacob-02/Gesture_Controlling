@@ -38,7 +38,7 @@ class HandDetector:
                     cv2.circle(frame, (cx, cy), 5, (0, 0, 0), cv2.FILLED)
         return lmList
 
-
+# This code is used to run the basics of the hand tracking module as and when needed
 def main():
     pTime = 0
 

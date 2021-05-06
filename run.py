@@ -19,7 +19,7 @@ while True:
     frame = detector.findHands(frame)
 
     lm = detector.findPosition(frame, draw=False)
-
+    distance=0
     if len(lm) != 0:
         x1, y1 = lm[4][1], lm[4][2]
         x2, y2 = lm[8][1], lm[8][2]
@@ -45,6 +45,9 @@ while True:
     cv2.putText(frame, str(int(fps)) + " fps", (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
 
     cv2.imshow('Webcam', frame)
+
+    volume = 100//400 * distance
+    call(["amixer", "-D", "pulse", "sset", "Master", str(distance) + "%"])
 
     if cv2.waitKey(20) & 0xFF == ord('d'):
         break

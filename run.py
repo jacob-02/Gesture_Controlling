@@ -1,3 +1,6 @@
-from landmark import face, hand, pose
+from landmark import *
+import cv2
+import time
+import numpy as np
 
-pose.pose_detection()
+

@@ -1,4 +1,4 @@
-# Gesture_Controlling
+# Gesture Controlling
 
 Using Mediapipe and OpenCV to control volume button using gesturesA simple code using Mediapipe, OpenCV and subprocess to create gesture controlled volume button
 

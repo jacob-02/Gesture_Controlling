@@ -5,29 +5,20 @@ Using Mediapipe and OpenCV to Control Volume using Gestures
 # Requirements
   
   Check the requirements.txt file
+  
   Also use python3.7 and higher for this project
  
 # How To Run
   
-  Install all necessary requirements
+  In Terminal
   
-  For OpenCV
-    
-    pip3 install opencv-python
-  
-  For Mediapipe
-    
-    pip3 install mediapipe
-  
-  For Subprocess
-    
-    pip3 install subprocess.run
-    
-  Finally
+    pip3 install -r requirements.txt
   
     python3 run.py
     
     or
+    
+    pip3 install -r requirements.txt
     
     python3 run_without_window.py
  

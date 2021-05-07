@@ -1,10 +1,11 @@
-# Gesture_Controlling
+# Gesture Controlling
 
-A simple code using Mediapipe, OpenCV and subprocess to create gesture controlled volume button
+Using Mediapipe and OpenCV to Control Volume using Gestures
 
 # Requirements
   
   Check the requirements.txt file
+  Also use python3.7 and higher for this project
  
 # How To Run
   
@@ -17,7 +18,6 @@ A simple code using Mediapipe, OpenCV and subprocess to create gesture controlle
   For Mediapipe
     
     pip3 install mediapipe
-    (It runs best on python3.7)
   
   For Subprocess
     
@@ -39,4 +39,8 @@ A simple code using Mediapipe, OpenCV and subprocess to create gesture controlle
   ![Screenshot from 2021-05-07 10-10-51](https://user-images.githubusercontent.com/74947682/117399245-ba555900-af1d-11eb-9ca4-0a22fd812723.png)
   
   ![Screenshot from 2021-05-07 10-10-57](https://user-images.githubusercontent.com/74947682/117399254-c3dec100-af1d-11eb-8fca-7eb49c596f70.png)
+
+# Stopping
+  
+  Press the 'd' key or in terminal press CTRL+c
 

@@ -51,7 +51,7 @@ while True:
 
     cv2.imshow('Webcam', frame)
 
-    volume = distance/2.0
+    volume = distance/2.2
     call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
 
     if cv2.waitKey(20) & 0xFF == ord('d'):

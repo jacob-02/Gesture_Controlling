@@ -34,7 +34,7 @@ Using Mediapipe and OpenCV to Control Volume using Gestures
     
 # How To Change Volume
   
-  Change the distance between the thumb and the index to change the volume. Also ensure that you wear headphones/earphones.
+  Change the distance between the thumb and the index to change the volume.
   
   ![Screenshot from 2021-05-07 10-10-51](https://user-images.githubusercontent.com/74947682/117399245-ba555900-af1d-11eb-9ca4-0a22fd812723.png)
   

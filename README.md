@@ -1,6 +1,6 @@
 # Gesture Controlling
 
-Using Mediapipe and OpenCV to control volume button using gestures
+Using Mediapipe and OpenCV to Control Volume using Gestures
 
 # Requirements
   

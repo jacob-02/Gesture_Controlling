@@ -31,8 +31,8 @@ while True:
     fps = 1 / (cTime - pTime)
     pTime = cTime
 
-    volume = 100//400 * distance
-    call(["amixer", "-D", "pulse", "sset", "Master", str(distance) + "%"])
+    volume = distance / 2.0
+    call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
 
     if cv2.waitKey(20) & 0xFF == ord('d'):
         break

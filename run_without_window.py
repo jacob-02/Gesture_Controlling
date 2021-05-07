@@ -31,7 +31,7 @@ while True:
     fps = 1 / (cTime - pTime)
     pTime = cTime
 
-    volume = distance / 2.0
+    volume = distance / 2.2
     call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
 
     if cv2.waitKey(20) & 0xFF == ord('d'):

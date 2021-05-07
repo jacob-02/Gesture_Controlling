@@ -34,4 +34,8 @@ Using Mediapipe and OpenCV to Control Volume using Gestures
 # Stopping
   
   Press the 'd' key or in terminal press CTRL+c
+  
+  or
+  
+  Leave hands from the frame for around 5 seconds
 

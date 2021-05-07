@@ -21,7 +21,7 @@ A simple code using Mediapipe, OpenCV and subprocess to create gesture controlle
   
   For Subprocess
     
-    pip install subprocess.run
+    pip3 install subprocess.run
   
   Run run.py (for seeing the window and landmarks) or run_without_window.py
     

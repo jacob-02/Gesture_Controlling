@@ -23,10 +23,13 @@ A simple code using Mediapipe, OpenCV and subprocess to create gesture controlle
     
     pip3 install subprocess.run
     
+  Finally
   
- # Run 
+    python3 run.py
     
-    run.py or run_without_window.py
+    or
+    
+    python3 run_without_window.py
  
     
 # How To Change Volume

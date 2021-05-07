@@ -6,7 +6,7 @@ from landmark import HandModule
 
 wCam, hCam = 700, 500
 
-capture = cv2.VideoCapture(0)
+capture = cv2.VideoCapture(1)
 capture.set(3, wCam)
 capture.set(4, hCam)
 pTime = 0
@@ -28,6 +28,8 @@ while True:
 
         distance = math.hypot(x2 - x1, y2 - y1)
 
+        volume = distance / 2.0
+
         cv2.circle(frame, (x1, y1), 10, (0, 255, 0), cv2.FILLED)
         cv2.circle(frame, (x2, y2), 10, (0, 255, 0), cv2.FILLED)
 
@@ -36,7 +38,10 @@ while True:
 
         cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), thickness=2)
 
-        cv2.putText(frame, str(float(distance)) + " units", (10, 450), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
+        if volume >= 100.0:
+            volume = 100
+
+        cv2.putText(frame, str(int(volume)) + "%", (10, 450), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)

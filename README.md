@@ -40,3 +40,7 @@ Using Mediapipe and OpenCV to control volume button using gesturesA simple code 
   
   ![Screenshot from 2021-05-07 10-10-57](https://user-images.githubusercontent.com/74947682/117399254-c3dec100-af1d-11eb-8fca-7eb49c596f70.png)
 
+# Stopping
+  
+  Press the 'd' key or in terminal press CTRL+c
+

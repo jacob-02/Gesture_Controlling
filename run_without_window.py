@@ -32,10 +32,7 @@ while True:
 
         distance = math.hypot(x2 - x1, y2 - y1)
 
-        volume = distance / 2.0
-
-        if volume >= 100.0:
-            volume = 100.0
+        volume = (distance - 15.0) // 3.25
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
@@ -51,6 +48,9 @@ while True:
         count += 1
         if count == 100:
             break
+
+    if detector.detectedHand:
+        count = 0
 
     if cv2.waitKey(20) & 0xFF == ord('d'):
         call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])

@@ -33,18 +33,20 @@ while True:
 
         distance = math.hypot(x2 - x1, y2 - y1)
 
-        volume = distance / 2.0
+        volume = (distance - 15.0) // 3.25
 
         cv2.circle(frame, (x1, y1), 10, (0, 255, 0), cv2.FILLED)
         cv2.circle(frame, (x2, y2), 10, (0, 255, 0), cv2.FILLED)
 
-        if distance >= 30.0:
-            cv2.circle(frame, (cx, cy), 10, (255, 0, 0), cv2.FILLED)
+        cv2.circle(frame, (cx, cy), 10, (255, 0, 0), cv2.FILLED)
 
         cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), thickness=2)
 
         if volume >= 100.0:
             volume = 100.0
+
+        if volume <= 0:
+            volume = 0
 
         cv2.putText(frame, str(int(volume)) + "%", (450, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
@@ -64,6 +66,9 @@ while True:
         count += 1
         if count == 100:
             break
+
+    if detector.detectedHand:
+        count = 0
 
     cv2.imshow('Webcam', frame)
 

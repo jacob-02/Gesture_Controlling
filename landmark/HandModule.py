@@ -42,6 +42,3 @@ class HandDetector:
             self.detectedHand = False
 
         return lmList
-
-
-# This code is used to run the basics of the hand tracking module as and when needed

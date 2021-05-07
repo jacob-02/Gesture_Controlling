@@ -8,7 +8,7 @@ A simple code using Mediapipe, OpenCV and subprocess to create gesture controlle
  
 # How To Run
   
-  # Install all necessary requirements
+  Install all necessary requirements
   
   For OpenCV
     

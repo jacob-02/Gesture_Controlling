@@ -1,4 +1,3 @@
-import time
 import mediapipe as mp
 import cv2
 
@@ -12,6 +11,7 @@ class HandDetector:
         self.mpHands = mp.solutions.hands
         self.hands = self.mpHands.Hands(self.mode, self.max_hands, self.detectionCon, self.trackCon)
         self.mpDraw = mp.solutions.drawing_utils
+        self.detectedHand = False
 
     def findHands(self, frame, draw=True):
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -30,46 +30,18 @@ class HandDetector:
         lmList = []
         if self.results.multi_hand_landmarks:
             handLms = self.results.multi_hand_landmarks[handNo]
+            self.detectedHand = True
             for id, lm in enumerate(handLms.landmark):
                 h, w, c = frame.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
                 lmList.append([id, cx, cy])
                 if draw:
                     cv2.circle(frame, (cx, cy), 5, (0, 0, 0), cv2.FILLED)
+
+        else:
+            self.detectedHand = False
+
         return lmList
 
+
 # This code is used to run the basics of the hand tracking module as and when needed
-def main():
-    pTime = 0
-
-    capture = cv2.VideoCapture(0)
-
-    detector = HandDetector()
-
-    while True:
-        ret, frame = capture.read()
-        frame = cv2.flip(frame, 1)
-
-        frame = detector.findHands(frame)
-
-        lm = detector.findPosition(frame)
-        if len(lm) != 0:
-            print(lm[3])
-
-        cTime = time.time()
-        fps = 1 / (cTime - pTime)
-        pTime = cTime
-
-        cv2.putText(frame, str(int(fps)) + " fps", (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
-
-        cv2.imshow('Webcam', frame)
-
-        if cv2.waitKey(20) & 0xFF == ord('d'):
-            break
-
-    capture.release()
-    cv2.destroyAllWindows()
-
-
-if __name__ == "__main__":
-    main()

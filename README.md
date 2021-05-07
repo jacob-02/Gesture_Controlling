@@ -27,6 +27,8 @@ A simple code using Mediapipe, OpenCV and subprocess to create gesture controlle
     
 # How To Change Volume
   
+  Change the distance between the thumb and the index to change the volume. Also ensure that you wear headphones/earphones.
+  
   ![Screenshot from 2021-05-07 10-10-51](https://user-images.githubusercontent.com/74947682/117399245-ba555900-af1d-11eb-9ca4-0a22fd812723.png)
   
   ![Screenshot from 2021-05-07 10-10-57](https://user-images.githubusercontent.com/74947682/117399254-c3dec100-af1d-11eb-8fca-7eb49c596f70.png)

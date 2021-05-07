@@ -37,5 +37,5 @@ Using Mediapipe and OpenCV to Control Volume using Gestures
   
   or
   
-  Leave hands from the frame for around 5 seconds
+  Leave hands from the frame for 8 seconds
 

@@ -51,10 +51,10 @@ while True:
     call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
 
     if not detector.detectedHand and count % 100 == 0:
-        call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[70]) + "%"])
         engine = pyttsx3.init()
         engine.say("No hands detected. Please place hands in frame")
         engine.runAndWait()
+        call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
         count += 1
         if count == 200:
             break

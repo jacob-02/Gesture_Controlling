@@ -64,7 +64,7 @@ while True:
 
     volumeList.append(volume)
 
-    if muter >= 40.0:
+    if muter > 40.0:
         call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
 
     if not detector.detectedHand and count % 100 == 0:
@@ -78,20 +78,17 @@ while True:
         if count == 200:
             break
 
-    if muter <= 40.0 and count % 100 == 0:
+    if muter <= 40.0:
         call(["amixer", "-D", "pulse", "sset", "Master", str(0) + "%"])
 
     if detector.detectedHand & count != 0:
         count = 0
-        engine = pyttsx3.init()
-        engine.say("Thank You")
-        engine.runAndWait()
+
+    cv2.imshow('Webcam', frame)
 
     if cv2.waitKey(20) & 0xFF == ord('d'):
         call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
         break
-
-    cv2.imshow('Webcam', frame)
 
     volumeList.pop()
 

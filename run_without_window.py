@@ -59,7 +59,7 @@ while True:
         if count == 200:
             break
 
-    if muter <= 40.0 and count % 100 == 0:
+    if muter <= 40.0:
         call(["amixer", "-D", "pulse", "sset", "Master", str(0) + "%"])
 
     if detector.detectedHand & count != 0:

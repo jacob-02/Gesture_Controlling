@@ -87,11 +87,11 @@ while True:
         engine.say("Thank You")
         engine.runAndWait()
 
-    cv2.imshow('Webcam', frame)
-
     if cv2.waitKey(20) & 0xFF == ord('d'):
         call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
         break
+
+    cv2.imshow('Webcam', frame)
 
     volumeList.pop()
 

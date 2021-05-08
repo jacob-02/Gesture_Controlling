@@ -31,6 +31,13 @@ Using Mediapipe and OpenCV to Control Volume using Gestures
   
   ![Screenshot from 2021-05-07 10-10-57](https://user-images.githubusercontent.com/74947682/117399254-c3dec100-af1d-11eb-8fca-7eb49c596f70.png)
 
+# How To Mute
+  
+  Touch the ends of your little finger and thumb
+  
+  ![Screenshot from 2021-05-08 21-11-11](https://user-images.githubusercontent.com/74947682/117545146-2b8e2c80-b042-11eb-9279-f25eadab2c8e.png)
+
+
 # Stopping
   
   Press the 'd' key or in terminal press CTRL+c

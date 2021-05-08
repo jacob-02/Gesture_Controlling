@@ -54,7 +54,7 @@ while True:
         if volume <= 0:
             volume = 0
 
-        cv2.putText(frame, str(int(volume)) + "% " + str(int(muter)) + " units", (450, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
+        cv2.putText(frame, str(int(volume)) + "% ", (450, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)

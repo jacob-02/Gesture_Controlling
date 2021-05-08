@@ -3,6 +3,7 @@ import time
 import math
 from subprocess import call
 from landmark import HandModule
+import pyttsx3
 
 wCam, hCam = 700, 500
 
@@ -60,15 +61,20 @@ while True:
 
     call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
 
-    if not detector.detectedHand:
-        cv2.putText(frame, 'No Hand Detected', (40, 450), cv2.FONT_HERSHEY_PLAIN, 3, (255, 255, 255), 3)
+    if not detector.detectedHand and count % 100 == 0:
+        engine = pyttsx3.init()
+        engine.say("No hands detected. Please place hands in frame")
+        engine.runAndWait()
         call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
         count += 1
-        if count == 100:
+        if count == 200:
             break
 
-    if detector.detectedHand:
+    if detector.detectedHand & count != 0:
         count = 0
+        engine = pyttsx3.init()
+        engine.say("Thank You")
+        engine.runAndWait()
 
     cv2.imshow('Webcam', frame)
 

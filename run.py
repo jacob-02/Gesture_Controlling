@@ -3,14 +3,12 @@ import time
 import math
 from subprocess import call
 from landmark import HandModule
-import pyttsx3
 
 wCam, hCam = 700, 500
 
 capture = cv2.VideoCapture(0)
 capture.set(3, wCam)
 capture.set(4, hCam)
-count = 0
 pTime = 0
 volume = 20.0
 volumeList = []
@@ -62,35 +60,18 @@ while True:
 
     volumeList.append(volume)
 
-    # if muter > 40.0:
-    #     call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
-
-    if not detector.detectedHand and count % 100 == 0:
-        engine = pyttsx3.init()
-        engine.say("No hands detected. Please place hands in frame")
-        engine.runAndWait()
-    #     call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
-
-    if not detector.detectedHand:
-        count += 1
-        if count == 200:
-            break
+    if muter > 40.0:
+        call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
 
     if muter <= 40.0:
-    #     call(["amixer", "-D", "pulse", "sset", "Master", str(0) + "%"])
+        call(["amixer", "-D", "pulse", "sset", "Master", str(0) + "%"])
         cv2.putText(frame, "Mute", (280, 450), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
-
-    if detector.detectedHand & count != 0:
-        count = 0
-
-    if muter > 40.0:
-        cv2.putText(frame, str(int(volume)) + "% ", (450, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
     cv2.imshow('Webcam', frame)
 
-    # if cv2.waitKey(20) & 0xFF == ord('d'):
-    #     call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
-    #     break
+    if cv2.waitKey(20) & 0xFF == ord('d'):
+        call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
+        break
 
     volumeList.pop()
 

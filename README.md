@@ -1,27 +1,34 @@
 # Gesture Controlling
 
-Using Mediapipe and OpenCV to Control Volume using Gestures
+## Using Mediapipe and OpenCV to Control Volume using Gestures
 
-# Requirements
-  
-  Check the requirements.txt file
-  
-  Also use python3.7 and higher for this project
- 
+### Clone the repo -
+```
+git clone https://github.com/jackjack3006/Gesture_Controlling.git
+cd Gesture_Controlling/
+```
+Windows: 
+```
+py -m pip install --upgrade pip
+py -m venv env
+.\env\Scripts\activate
+(or)
+source env/Scripts/activate
+```
+Linux/MacOS:
+```
+python3 -m pip install --user virtualenv
+python3 -m pip install --user virtualenv
+source env/bin/activate
+```
+-----
+
+
 # How To Run
-  
-  In Terminal
-  
-    pip3 install -r requirements.txt
-  
-    python3 run.py
-    
-    or
-    
-    pip3 install -r requirements.txt
-    
-    python3 run_without_window.py
- 
+  ```
+  pip install -r requirements.txt
+  python3 run.py (or) python3 run_without_window.py
+  ```
     
 # How To Change Volume
   
@@ -40,9 +47,7 @@ Using Mediapipe and OpenCV to Control Volume using Gestures
 
 # Stopping
   
-  Press the 'd' key or in terminal press CTRL+c
-  
-  or
-  
-  Leave hands from the frame for 8 seconds
+  Press the ```d``` key or in terminal press ```CTRL+c```
+  **or**
+  Leave hands from the frame for *8 seconds*.
 

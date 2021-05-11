@@ -62,14 +62,14 @@ while True:
 
     volumeList.append(volume)
 
-    if muter > 40.0:
-        call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
+    # if muter > 40.0:
+    #     call(["amixer", "-D", "pulse", "sset", "Master", str(volume) + "%"])
 
     if not detector.detectedHand and count % 100 == 0:
         engine = pyttsx3.init()
         engine.say("No hands detected. Please place hands in frame")
         engine.runAndWait()
-        call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
+    #     call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
 
     if not detector.detectedHand:
         count += 1
@@ -77,7 +77,7 @@ while True:
             break
 
     if muter <= 40.0:
-        call(["amixer", "-D", "pulse", "sset", "Master", str(0) + "%"])
+    #     call(["amixer", "-D", "pulse", "sset", "Master", str(0) + "%"])
         cv2.putText(frame, "Mute", (280, 450), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 0), 3)
 
     if detector.detectedHand & count != 0:
@@ -88,9 +88,9 @@ while True:
 
     cv2.imshow('Webcam', frame)
 
-    if cv2.waitKey(20) & 0xFF == ord('d'):
-        call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
-        break
+    # if cv2.waitKey(20) & 0xFF == ord('d'):
+    #     call(["amixer", "-D", "pulse", "sset", "Master", str(volumeList[0]) + "%"])
+    #     break
 
     volumeList.pop()
 
